@@ -1,59 +1,45 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#eeeae3" />
-  <meta name="description" content="Explorez le Savon Nettoyant 350 ml de MA JOLIE BEAUTÉ." />
-  <title>MA JOLIE BEAUTÉ — Savon Nettoyant</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171114"><meta name="description" content="Découvrez le Savon Nettoyant 350 ml de MA JOLIE BEAUTÉ.">
+<title>MA JOLIE BEAUTÉ — L'expérience du soin</title>
 </head>
 <body>
-  <div id="app">
-    <header class="site-header">
-      <a class="brand" href="#" aria-label="MA JOLIE BEAUTÉ">
-        <span class="brand-symbol">MJ</span>
-        <span class="brand-name">MA JOLIE <b>BEAUTÉ</b><small>MAISON DE BEAUTÉ</small></span>
-      </a>
-      <span class="header-edition">L'ART DU SOIN · ÉDITION 01</span>
-      <button class="cart-button" id="cart-button" type="button">PANIER <span id="cart-count">0</span></button>
-    </header>
-    <main>
-      <section class="hero-intro">
-        <p class="eyebrow"><span></span> LE GESTE BEAUTÉ, AUTREMENT</p>
-        <h1>Un essentiel.<br><em>À découvrir sous chaque angle.</em></h1>
-      </section>
-      <section class="showroom" aria-label="Présentation interactive du Savon Nettoyant">
-        <div class="visual-column">
-          <div class="viewer-frame">
-            <div class="viewer-topline"><span>MA JOLIE BEAUTÉ / 001</span><span>OBJET EN 3 DIMENSIONS</span></div>
-            <div id="viewer" class="viewer" aria-label="Modèle 3D du pot de savon nettoyant"></div>
-            <div class="viewer-bottomline"><span>360°</span><span>FAITES GLISSER POUR EXPLORER</span><span>350 ML</span></div>
-          </div>
-          <div class="interaction-row">
-            <button id="open-lid" class="text-action" type="button"><span class="action-icon">＋</span> OUVRIR LE COUVERCLE</button>
-            <button id="reset-view" class="text-action muted-action" type="button">RÉINITIALISER LA VUE ↺</button>
-          </div>
-        </div>
-        <aside class="product-panel">
-          <p class="product-index">01 <span>/</span> LE SOIN</p>
-          <p class="product-kicker">MA JOLIE BEAUTÉ</p>
-          <h2 id="product-name">Savon Nettoyant</h2>
-          <p class="volume" id="product-volume">350 ml</p>
-          <div class="short-rule"></div>
-          <p class="product-description" id="product-description">Un produit de la collection MA JOLIE BEAUTÉ. Description détaillée à confirmer auprès de la vendeuse.</p>
-          <div class="product-meta"><span>PRIX</span><strong id="product-price">À confirmer</strong></div>
-          <div class="quantity-row">
-            <label for="quantity">QUANTITÉ</label>
-            <div class="quantity-control"><button id="qty-minus" type="button" aria-label="Diminuer">−</button><output id="quantity">1</output><button id="qty-plus" type="button" aria-label="Augmenter">+</button></div>
-          </div>
-          <button id="add-cart" class="primary-button" type="button">AJOUTER AU PANIER <span>↗</span></button>
-          <p class="fine-print">Disponibilité et tarif confirmés auprès de la vendeuse.</p>
-          <div class="product-note"><span class="note-mark">✳</span><span>PRENEZ LE TEMPS D'EXPLORER<br><small>Faites pivoter le produit ou ouvrez son couvercle.</small></span></div>
-        </aside>
-      </section>
-    </main>
-    <footer><span>MA JOLIE BEAUTÉ</span><span>LE SOIN PREND UNE AUTRE DIMENSION.</span><span>001 — 350 ML</span></footer>
-  </div>
-  <script type="module" src="/src/main.js"></script>
-</body>
-</html>
+<div id="app">
+<header class="site-header">
+<a class="brand" href="#" aria-label="MA JOLIE BEAUTÉ"><span class="brand-mark">MJ</span><span class="brand-wordmark">MA JOLIE <b>BEAUTÉ</b><small>MAISON DE BEAUTÉ</small></span></a>
+<span class="header-caption">L'EXPÉRIENCE DU SOIN · 001</span>
+<button class="cart-button" id="cart-button" type="button">PANIER <span id="cart-count">0</span></button>
+</header>
+<main>
+<section class="cinematic-intro">
+<div class="intro-grain"></div><div class="intro-copy">
+<p class="eyebrow"><span></span> MA JOLIE BEAUTÉ PRÉSENTE</p>
+<h1>Le soin devient<br><em>une expérience.</em></h1>
+<p class="intro-description">Découvrez le Savon Nettoyant sous un nouvel angle.</p>
+<a class="discover-link" href="#experience">DÉCOUVRIR LE PRODUIT <span>↓</span></a>
+</div>
+<div class="intro-index"><span>COLLECTION</span><strong>01 / 01</strong></div>
+<div class="intro-orbit orbit-one"></div><div class="intro-orbit orbit-two"></div>
+</section>
+<section id="experience" class="experience">
+<div class="section-heading"><div><p class="eyebrow"><span></span> L'OBJET, EN DÉTAIL</p><h2>Une autre façon<br><em>de découvrir.</em></h2></div><p class="section-note">Explorez le produit librement.<br>Faites glisser pour le faire pivoter.</p></div>
+<section class="showroom" aria-label="Présentation interactive du Savon Nettoyant">
+<div class="visual-column"><div class="viewer-frame">
+<div class="viewer-topline"><span>MA JOLIE BEAUTÉ / 001</span><span>APERÇU 3D · MODÈLE PROVISOIRE</span></div>
+<div id="viewer" class="viewer" aria-label="Modèle 3D provisoire du pot de savon nettoyant"></div>
+<div class="viewer-bottomline"><span>360°</span><span>GLISSER POUR EXPLORER</span><span>350 ML</span></div>
+</div>
+<div class="interaction-row"><button id="open-lid" class="text-action" type="button"><span class="action-icon">＋</span> OUVRIR LE COUVERCLE</button><button id="reset-view" class="text-action muted-action" type="button">RÉINITIALISER ↺</button></div>
+</div>
+<aside class="product-panel"><p class="product-index">01 <span>/</span> LE SOIN</p><p class="product-kicker">MA JOLIE BEAUTÉ</p><h3 id="product-name">Savon Nettoyant</h3><p class="volume" id="product-volume">350 ml</p><div class="short-rule"></div>
+<p class="product-description" id="product-description">Un produit de la collection MA JOLIE BEAUTÉ. Description détaillée à confirmer auprès de la vendeuse.</p>
+<div class="product-meta"><span>PRIX</span><strong id="product-price">À confirmer</strong></div>
+<div class="quantity-row"><label for="quantity">QUANTITÉ</label><div class="quantity-control"><button id="qty-minus" type="button" aria-label="Diminuer">−</button><output id="quantity">1</output><button id="qty-plus" type="button" aria-label="Augmenter">+</button></div></div>
+<button id="add-cart" class="primary-button" type="button">AJOUTER AU PANIER <span>↗</span></button><p class="fine-print">Disponibilité et tarif à confirmer auprès de la vendeuse.</p>
+</aside></section></section>
+</main>
+<footer><span>MA JOLIE BEAUTÉ</span><span>LE SOIN PREND UNE AUTRE DIMENSION.</span><span>001 — 350 ML</span></footer>
+</div><script type="module" src="/src/main.js"></script>
+</body></html>
