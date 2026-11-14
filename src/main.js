@@ -13,30 +13,30 @@ const viewer = $("viewer");
 function init3D() {
   try {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color("#ded8ce");
+    scene.background = new THREE.Color("#24191f");
     camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
     camera.position.set(0, 1.5, 7.8);
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
+    renderer.toneMappingExposure = 1.05;
     viewer.appendChild(renderer.domElement);
 
-    scene.add(new THREE.HemisphereLight(0xf8f3eb, 0x665b55, 1.65));
-    const key = new THREE.DirectionalLight(0xffffff, 3.2);
-    key.position.set(4, 7, 6);
+    scene.add(new THREE.HemisphereLight(0xf8e8dc, 0x21151c, 1.15));
+    const key = new THREE.DirectionalLight(0xffe5cf, 4.1);
+    key.position.set(4, 6, 5);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xe7c9bd, 1.25);
+    const rim = new THREE.DirectionalLight(0xd59aa4, 2.0);
     rim.position.set(-5, 3, -4);
     scene.add(rim);
-    const fill = new THREE.PointLight(0xffffff, 35, 20);
+    const fill = new THREE.PointLight(0xffd9c5, 24, 18);
     fill.position.set(0, 1, 5);
     scene.add(fill);
 
     const floor = new THREE.Mesh(
-      new THREE.CircleGeometry(4.5, 64),
-      new THREE.MeshStandardMaterial({ color: "#cfc6ba", roughness: 0.92 })
+      new THREE.CircleGeometry(4.5, 96),
+      new THREE.MeshStandardMaterial({ color: "#382832", roughness: 0.82, metalness: 0.08 })
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -1.25;
@@ -46,12 +46,13 @@ function init3D() {
     scene.add(jarGroup);
 
     const glass = new THREE.MeshPhysicalMaterial({
-      color: "#bd8490", roughness: 0.2, metalness: 0.02,
-      transmission: 0.38, thickness: 0.55, transparent: true, opacity: 0.88,
+      color: "#a96f7d", roughness: 0.16, metalness: 0.025,
+      transmission: 0.52, thickness: 0.72, transparent: true, opacity: 0.94,
       clearcoat: 1, clearcoatRoughness: 0.08
     });
-    const body = new THREE.Mesh(new THREE.CylinderGeometry(1.22, 1.12, 2.15, 96, 1, false), glass);
-    body.position.y = -0.05;
+    const bodyProfile = [new THREE.Vector2(0.98, -1.12), new THREE.Vector2(1.08, -1.06), new THREE.Vector2(1.14, -0.92), new THREE.Vector2(1.18, -0.68), new THREE.Vector2(1.2, 0.65), new THREE.Vector2(1.18, 0.91), new THREE.Vector2(1.12, 1.05), new THREE.Vector2(1.08, 1.1)];
+    const body = new THREE.Mesh(new THREE.LatheGeometry(bodyProfile, 128), glass);
+    body.position.y = -0.02;
     jarGroup.add(body);
 
     const base = new THREE.Mesh(
@@ -63,7 +64,7 @@ function init3D() {
 
     const contents = new THREE.Mesh(
       new THREE.CylinderGeometry(1.08, 1.04, 1.12, 96),
-      new THREE.MeshStandardMaterial({ color: "#c68d9a", roughness: 0.48, metalness: 0.01 })
+      new THREE.MeshStandardMaterial({ color: "#b77c89", roughness: 0.36, metalness: 0.015 })
     );
     contents.position.y = -0.48;
     jarGroup.add(contents);
@@ -117,7 +118,7 @@ function init3D() {
     printedLabel.position.set(0, 0.03, 1.247);
     jarGroup.add(printedLabel);
 
-    const lidMaterial = new THREE.MeshStandardMaterial({ color: "#171316", roughness: 0.28, metalness: 0.12 });
+    const lidMaterial = new THREE.MeshStandardMaterial({ color: "#21171d", roughness: 0.22, metalness: 0.22 });
     lidPivot = new THREE.Group();
     lidPivot.position.set(1.12, 1.16, 0);
     jarGroup.add(lidPivot);
