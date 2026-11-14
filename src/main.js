@@ -88,18 +88,47 @@ function init3D() {
     plate.position.set(0, 0.03, 1.235);
     jarGroup.add(plate);
 
+    const labelCanvas = document.createElement("canvas");
+    labelCanvas.width = 1024;
+    labelCanvas.height = 512;
+    const ctx = labelCanvas.getContext("2d");
+    ctx.fillStyle = "#171316";
+    ctx.fillRect(0, 0, 1024, 512);
+    ctx.strokeStyle = "#c49a4b";
+    ctx.lineWidth = 8;
+    ctx.strokeRect(26, 24, 972, 464);
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#d5b56f";
+    ctx.font = "600 43px Georgia";
+    ctx.fillText("MA JOLIE BEAUTÉ", 512, 130);
+    ctx.fillStyle = "#fff7f8";
+    ctx.font = "600 76px Georgia";
+    ctx.fillText("SAVON", 512, 250);
+    ctx.fillText("NETTOYANT", 512, 335);
+    ctx.fillStyle = "#d5b56f";
+    ctx.font = "34px Arial";
+    ctx.fillText("350 ml", 512, 420);
+    const labelTexture = new THREE.CanvasTexture(labelCanvas);
+    labelTexture.colorSpace = THREE.SRGBColorSpace;
+    const printedLabel = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.5, 0.7),
+      new THREE.MeshBasicMaterial({ map: labelTexture, transparent: false })
+    );
+    printedLabel.position.set(0, 0.03, 1.247);
+    jarGroup.add(printedLabel);
+
     const lidMaterial = new THREE.MeshStandardMaterial({ color: "#171316", roughness: 0.28, metalness: 0.12 });
     lidPivot = new THREE.Group();
-    lidPivot.position.set(0, 1.16, 0);
+    lidPivot.position.set(1.12, 1.16, 0);
     jarGroup.add(lidPivot);
     const lid = new THREE.Mesh(new THREE.CylinderGeometry(1.25, 1.25, 0.28, 96), lidMaterial);
-    lid.position.y = 0.13;
+    lid.position.set(-1.12, 0.13, 0);
     lidPivot.add(lid);
     const lidTrim = new THREE.Mesh(new THREE.CylinderGeometry(1.255, 1.255, 0.045, 96), gold);
-    lidTrim.position.y = 0.0;
+    lidTrim.position.set(-1.12, 0.0, 0);
     lidPivot.add(lidTrim);
     const lidTop = new THREE.Mesh(new THREE.CylinderGeometry(1.18, 1.18, 0.035, 96), lidMaterial);
-    lidTop.position.y = 0.285;
+    lidTop.position.set(-1.12, 0.285, 0);
     lidPivot.add(lidTop);
 
     const ring = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.035, 12, 96), gold);
@@ -140,7 +169,7 @@ function init3D() {
     const clock = new THREE.Clock();
     const animate = () => {
       animationId = requestAnimationFrame(animate);
-      const target = lidOpen ? -1.18 : 0;
+      const target = lidOpen ? -1.35 : 0;
       lidPivot.rotation.z += (target - lidPivot.rotation.z) * 0.09;
       renderer.render(scene, camera);
     };
