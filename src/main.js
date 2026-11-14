@@ -13,7 +13,7 @@ const viewer = $("viewer");
 function init3D() {
   try {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color("#f4e5e9");
+    scene.background = new THREE.Color("#ded8ce");
     camera = new THREE.PerspectiveCamera(34, 1, 0.1, 100);
     camera.position.set(0, 1.5, 7.8);
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
@@ -23,11 +23,11 @@ function init3D() {
     renderer.toneMappingExposure = 1.25;
     viewer.appendChild(renderer.domElement);
 
-    scene.add(new THREE.HemisphereLight(0xfff5f7, 0x80536a, 2.0));
+    scene.add(new THREE.HemisphereLight(0xf8f3eb, 0x665b55, 1.65));
     const key = new THREE.DirectionalLight(0xffffff, 3.2);
     key.position.set(4, 7, 6);
     scene.add(key);
-    const rim = new THREE.DirectionalLight(0xffb6d0, 2.4);
+    const rim = new THREE.DirectionalLight(0xe7c9bd, 1.25);
     rim.position.set(-5, 3, -4);
     scene.add(rim);
     const fill = new THREE.PointLight(0xffffff, 35, 20);
@@ -36,7 +36,7 @@ function init3D() {
 
     const floor = new THREE.Mesh(
       new THREE.CircleGeometry(4.5, 64),
-      new THREE.MeshStandardMaterial({ color: "#efd6df", roughness: 0.85 })
+      new THREE.MeshStandardMaterial({ color: "#cfc6ba", roughness: 0.92 })
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -1.25;
@@ -46,7 +46,7 @@ function init3D() {
     scene.add(jarGroup);
 
     const glass = new THREE.MeshPhysicalMaterial({
-      color: selected.color, roughness: 0.16, metalness: 0.03,
+      color: "#bd8490", roughness: 0.2, metalness: 0.02,
       transmission: 0.38, thickness: 0.55, transparent: true, opacity: 0.88,
       clearcoat: 1, clearcoatRoughness: 0.08
     });
@@ -56,14 +56,14 @@ function init3D() {
 
     const base = new THREE.Mesh(
       new THREE.CylinderGeometry(1.12, 1.12, 0.12, 96),
-      new THREE.MeshStandardMaterial({ color: "#d94e87", roughness: 0.25, metalness: 0.08 })
+      new THREE.MeshStandardMaterial({ color: "#a96d7b", roughness: 0.32, metalness: 0.04 })
     );
     base.position.y = -1.16;
     jarGroup.add(base);
 
     const contents = new THREE.Mesh(
       new THREE.CylinderGeometry(1.08, 1.04, 1.12, 96),
-      new THREE.MeshStandardMaterial({ color: "#ef9abb", roughness: 0.38, metalness: 0.02 })
+      new THREE.MeshStandardMaterial({ color: "#c68d9a", roughness: 0.48, metalness: 0.01 })
     );
     contents.position.y = -0.48;
     jarGroup.add(contents);
@@ -166,8 +166,7 @@ function init3D() {
       camera.position.z = THREE.MathUtils.clamp(camera.position.z + event.deltaY * 0.008, 5.8, 11);
     }, { passive: false });
 
-    const clock = new THREE.Clock();
-    const animate = () => {
+      const animate = () => {
       animationId = requestAnimationFrame(animate);
       const target = lidOpen ? -1.35 : 0;
       lidPivot.rotation.z += (target - lidPivot.rotation.z) * 0.09;
@@ -236,6 +235,5 @@ $("cart-button").addEventListener("click", () => {
   window.open(`https://wa.me/${shopConfig.whatsappNumber}?text=${message}`, "_blank", "noopener,noreferrer");
 });
 
-renderCatalogue();
 renderProduct();
 init3D();
